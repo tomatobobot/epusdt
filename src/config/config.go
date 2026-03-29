@@ -11,15 +11,18 @@ import (
 )
 
 var (
-	AppDebug    bool
-	MysqlDns    string
-	RuntimePath string
-	LogSavePath string
-	StaticPath  string
-	TgBotToken  string
-	TgProxy     string
-	TgManage    int64
-	UsdtRate    float64
+	AppDebug     bool
+	MysqlDns     string
+	RuntimePath  string
+	LogSavePath  string
+	StaticPath   string
+	TgBotToken   string
+	TgProxy      string
+	TgManage     int64
+	UsdtRate     float64
+	BuildVersion = "0.0.0-dev"
+	BuildCommit  = "none"
+	BuildDate    = "unknown"
 )
 
 func Init() {
@@ -65,7 +68,15 @@ func mustMkdir(path string) {
 }
 
 func GetAppVersion() string {
-	return "0.0.2"
+	return BuildVersion
+}
+
+func GetBuildCommit() string {
+	return BuildCommit
+}
+
+func GetBuildDate() string {
+	return BuildDate
 }
 
 func GetAppName() string {

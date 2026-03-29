@@ -2,6 +2,12 @@ package command
 
 import (
 	"context"
+	"net/http"
+	"os"
+	"os/signal"
+	"time"
+
+	"github.com/assimon/luuu/bootstrap"
 	"github.com/assimon/luuu/config"
 	"github.com/assimon/luuu/middleware"
 	"github.com/assimon/luuu/route"
@@ -12,10 +18,6 @@ import (
 	echoMiddleware "github.com/labstack/echo/v4/middleware"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"net/http"
-	"os"
-	"os/signal"
-	"time"
 )
 
 var httpCmd = &cobra.Command{
@@ -35,6 +37,8 @@ var startCmd = &cobra.Command{
 	Short: "启动",
 	Long:  "启动http服务",
 	Run: func(cmd *cobra.Command, args []string) {
+		bootstrap.InitApp()
+		printBanner()
 		HttpServerStart()
 	},
 }

@@ -1,7 +1,8 @@
 package bootstrap
 
 import (
-	"github.com/assimon/luuu/command"
+	"sync"
+
 	"github.com/assimon/luuu/config"
 	"github.com/assimon/luuu/model/dao"
 	"github.com/assimon/luuu/mq"
@@ -10,15 +11,15 @@ import (
 	"github.com/assimon/luuu/util/log"
 )
 
-func Start() {
-	config.Init()
-	log.Init()
-	dao.Init()
-	mq.Start()
-	go telegram.BotStart()
-	go task.Start()
+var initOnce sync.Once
 
-	if err := command.Execute(); err != nil {
-		panic(err)
-	}
+func InitApp() {
+	initOnce.Do(func() {
+		config.Init()
+		log.Init()
+		dao.Init()
+		mq.Start()
+		go telegram.BotStart()
+		go task.Start()
+	})
 }
