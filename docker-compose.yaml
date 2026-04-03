@@ -1,6 +1,6 @@
 services:
   epusdt:
-    image: gmwalletapp/epusdt:alpine
+    image: gmwallet/epusdt:alpine
     restart: always
     build:
       context: .
