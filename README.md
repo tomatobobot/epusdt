@@ -66,12 +66,12 @@ Deploy it privately, integrate via HTTP API, and start receiving **crypto paymen
 
 - **多链多币种** — 支持 TRC20、ERC20、BEP20、Polygon 等主流网络，不再局限于单一链
 - **私有化部署** — 无需担心钱包被篡改、吞单，资金完全自主掌控
-- **零依赖运行** — 单个二进制文件即可启动，仅需 MySQL + Redis
-- **跨平台** — 支持 x86 / ARM 架构的 Windows / Linux 设备
+- **零依赖运行** — 单个二进制文件即可启动，低并发场景无需安装 MySQL + Redis,一键部署零成本维护
+- **跨平台** — 支持 x86 / ARM 架构的 Windows / Linux / Mac 设备
 - **多钱包轮询** — 自动轮换收款地址，提高订单并发处理能力
 - **异步队列** — 高性能消息回调，优雅处理高并发场景
-- **HTTP API** — 标准化接口，任何语言 / 框架均可快速集成
-- **Telegram Bot** — 实时支付通知，便捷管理与监控
+- **HTTP API** — 标准化接口，任何语言 / 框架均可10min内集成
+- **Telegram Bot** — 实时支付通知，快捷管理与监控
 
 ---
 
@@ -83,12 +83,10 @@ Deploy it privately, integrate via HTTP API, and start receiving **crypto paymen
 
 | 教程 | 说明 |
 |------|------|
-| [Docker 部署](wiki/docker-RUN.md) | 推荐方式，一键启动 |
-| [宝塔面板部署](wiki/BT_RUN.md) | 适合宝塔用户 |
-| [手动部署](wiki/manual_RUN.md) | 完全手动控制 |
-| [开发者 API 文档](wiki/API.md) | 接口集成指南 |
-| [自定义汇率接口](wiki/LEGACY_API_MIGRATION.md) | API 进阶用法 |
-| [PHP 极速接入](https://github.com/BlueSkyXN/PHPAPI-for-epusdt) | HTML + PHP 快速集成 |
+| [Docker 部署](https://epusdt.com/guide/installation/docker) | 推荐方式，一键启动 |
+| [宝塔面板部署](https://epusdt.com/guide/installation/aapanel) | 适合宝塔用户 |
+| [手动部署](https://epusdt.com/guide/installation/manual.html) | 完全手动控制 |
+| [开发者 API 文档](https://epusdt.com/zh/guide/integration/gmpay.html) | 接口集成指南 |
 
 ---
 
@@ -107,7 +105,7 @@ Epusdt
 
 ## 🔧 实现原理
 
-Epusdt 通过监听多条区块链网络（TRC20、ERC20、BEP20、Polygon 等）的 API 或节点，实时捕获钱包地址的代币入账事件，利用**金额差异**与**时效性**精确匹配交易归属：
+Epusdt 通过监听多条区块链网络（TRC20、ERC20、BEP20、Polygon 等）的 API 或RPC节点，实时捕获钱包地址的代币入账事件，利用**金额差异**与**时效性**精确匹配交易归属：
 
 ```
 工作流程：
